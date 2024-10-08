@@ -10,3 +10,6 @@
 这里需要注意的是，需要到服务目录下执行
 
 端口号修改在product-service下etc/productservice-api.yaml
+
+生成代码:
+> goctl api go --api product_service.api --dir ./

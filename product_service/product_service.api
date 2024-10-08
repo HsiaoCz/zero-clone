@@ -1,15 +1,22 @@
 syntax = "v1"
 
-type Request {
-	Name string `path:"name,options=you|me"`
+type ProductCreateRequest {
+	ProductName  string  `json:"product_name"`
+	ProductCode  string  `json:"product_code"`
+	ProductPrice float64 `json:"product_price"`
+	ProductDesc  string  `json:"product_desc"`
 }
 
-type Response {
-	Message string `json:"message"`
+type ProductCreateResponse {
+	ProductName string `json:"product_name"`
 }
 
+@server (
+	group:  product
+	prefix: /api/v1
+)
 service product_service-api {
-	@handler Product_serviceHandler
-	get /from/:name (Request) returns (Response)
+	@handler ProductCreate
+	post / (ProductCreateRequest) returns (ProductCreateResponse)
 }
 

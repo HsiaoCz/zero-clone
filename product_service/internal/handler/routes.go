@@ -4,6 +4,7 @@ package handler
 import (
 	"net/http"
 
+	product "github.com/HsiaoCz/zero-clone/product_service/internal/handler/product"
 	"github.com/HsiaoCz/zero-clone/product_service/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -13,10 +14,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodGet,
-				Path:    "/from/:name",
-				Handler: Product_serviceHandler(serverCtx),
+				Method:  http.MethodPost,
+				Path:    "/",
+				Handler: product.ProductCreateHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/api/v1"),
 	)
 }
