@@ -1,0 +1,4 @@
+syntax = "v1"
+
+import "producer_service.api"
+import "product_service.api"

@@ -1,0 +1,20 @@
+syntax = "v1"
+
+type ProducerCreateRequest {
+	ProducerName  string  `json:"producer_name"`
+	ProducerCode  string  `json:"producer_code"`
+}
+
+type ProducerCreateResponse {
+	ProducerName string `json:"product_name"`
+}
+
+@server (
+	group:  producer
+	prefix: /api/v1/producer
+)
+service product_service-api {
+	@handler ProducerCreate
+	post / (ProducerCreateRequest) returns (ProducerCreateResponse)
+}
+

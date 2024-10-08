@@ -13,7 +13,7 @@ type ProductCreateResponse {
 
 @server (
 	group:  product
-	prefix: /api/v1
+	prefix: /api/v1/product
 )
 service product_service-api {
 	@handler ProductCreate
