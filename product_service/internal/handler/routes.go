@@ -4,6 +4,7 @@ package handler
 import (
 	"net/http"
 
+	dart "github.com/HsiaoCz/zero-clone/product_service/internal/handler/dart"
 	producer "github.com/HsiaoCz/zero-clone/product_service/internal/handler/producer"
 	product "github.com/HsiaoCz/zero-clone/product_service/internal/handler/product"
 	"github.com/HsiaoCz/zero-clone/product_service/internal/svc"
@@ -12,6 +13,17 @@ import (
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/",
+				Handler: dart.DartCreateHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/api/v1/dart"),
+	)
+
 	server.AddRoutes(
 		[]rest.Route{
 			{

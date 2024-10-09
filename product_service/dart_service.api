@@ -1,0 +1,22 @@
+syntax = "v1"
+
+type DartCreateRequest {
+	ProductName  string  `json:"product_name"`
+	ProductCode  string  `json:"product_code"`
+	ProductPrice float64 `json:"product_price"`
+	ProductDesc  string  `json:"product_desc"`
+}
+
+type DartCreateResponse {
+	ProductName string `json:"product_name"`
+}
+
+@server (
+	group:  dart
+	prefix: /api/v1/dart
+)
+service product_service-api {
+	@handler DartCreate
+	post / (DartCreateRequest) returns (DartCreateResponse)
+}
+
